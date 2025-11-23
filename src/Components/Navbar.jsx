@@ -109,92 +109,48 @@ const Navbar = () => {
         </button>
         {/* Desktop menu */}
         <ul className="hidden sm:flex gap-6 text-zinc-200 font-medium">
-          <li>
-            <a
-              href="#skills"
-              className="hover:text-white transition-colors duration-200"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Skills
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="hover:text-white transition-colors duration-200"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Projects
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="hover:text-white transition-colors duration-200"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
-            >
-              Contact
-            </a>
-          </li>
+          {['Skills', 'Projects', 'Contact'].map((item) => (
+            <li key={item} className="relative group">
+              <a
+                href={`#${item.toLowerCase()}`}
+                className="transition-colors duration-200 relative z-10"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                {item}
+              </a>
+              {/* Hover underline */}
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+          ))}
         </ul>
         {/* Mobile menu */}
         {menuOpen && (
           <ul
-            className="absolute top-[calc(100%+12px)] left-0 right-0 mx-auto w-full max-w-full bg-zinc-900/90 backdrop-blur-md rounded-2xl flex flex-col items-center gap-6 py-6  sm:hidden text-zinc-200 font-medium shadow-2xl z-50 transition-all duration-300"
+            className="absolute top-[calc(100%+12px)] left-0 right-0 mx-auto w-full max-w-full bg-zinc-900/90 backdrop-blur-md rounded-2xl flex flex-col items-center gap-6 py-6 px-[25px] sm:hidden text-zinc-200 font-medium shadow-2xl z-50 transition-all duration-300"
             style={{
               marginLeft: 'auto',
               marginRight: 'auto',
-            
             }}
           >
-            <li className="w-full">
-              <a
-                href="#skills"
-                className="hover:text-white transition-colors duration-200 block w-full text-center"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Skills
-              </a>
-            </li>
-            <li className="w-full">
-              <a
-                href="#projects"
-                className="hover:text-white transition-colors duration-200 block w-full text-center"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Projects
-              </a>
-            </li>
-            <li className="w-full">
-              <a
-                href="#contact"
-                className="hover:text-white transition-colors duration-200 block w-full text-center"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                Contact
-              </a>
-            </li>
+            {['Skills', 'Projects', 'Contact'].map((item) => (
+              <li key={item} className="w-full relative group">
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setMenuOpen(false);
+                    document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                >
+                  {item}
+                </a>
+                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+              </li>
+            ))}
           </ul>
         )}
       </div>

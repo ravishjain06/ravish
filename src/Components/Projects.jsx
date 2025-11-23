@@ -444,7 +444,9 @@ export default function Projects() {
 
         {/* PROJECT SECTIONS */}
         {displayedProjects.map((project, idx) => (
-          <ProjectSection key={idx} {...project} />
+          <div key={idx} style={{ marginBottom: "64px" /* Increased space after each project */ }}>
+            <ProjectSection {...project} />
+          </div>
         ))}
 
         {/* View More Button */}
