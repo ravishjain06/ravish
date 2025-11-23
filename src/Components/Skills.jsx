@@ -1,33 +1,33 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-// Professional minimal color palette
+// Consistent luxury black theme
 const theme = {
-  bg: "#fafafa",
-  cardBg: "#ffffff",
-  border: "#e5e7eb",
-  accent: "#3b82f6",
-  accentLight: "#dbeafe",
-  text: "#111827",
-  textSecondary: "#6b7280",
-  textMuted: "#9ca3af",
-  shadow: "rgba(0, 0, 0, 0.04)",
-  shadowHover: "rgba(0, 0, 0, 0.12)"
+  bg: "linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)",
+  cardBg: "rgba(20,20,20,0.65)",
+  border: "rgba(255,255,255,0.05)",
+  accent: "#cfcfcf",
+  accentLight: "rgba(200,200,200,0.08)",
+  text: "#ffffff",
+  textSecondary: "#d6d6d6",
+  textMuted: "#9b9b9b",
+  shadow: "rgba(0, 0, 0, 0.4)",
+  shadowHover: "rgba(0, 0, 0, 0.6)"
 };
 
 // Map each skill to its SVG file
 const skillIcons = {
   React: "/react-svgrepo-com.svg",
-  TypeScript: "/typescript-icon-svgrepo-com.svg",
+  TypeScript: "/typescript.png",
   HTML: "/html-5-svgrepo-com.svg",
   CSS: "/css-3-svgrepo-com.svg",
   Tailwind: "/tailwindcss-icon-svgrepo-com.svg",
   Redux: "/redux-svgrepo-com.svg",
   "Node.js": "/nodejs-icon-svgrepo-com.svg",
-  Express: "/express-svgrepo-com.svg",
+  Express: "/icons8-express-js-48.png",
   MongoDB: "/mongodb-svgrepo-com.svg",
   Git: "/github.svg",
-  Docker: "/docker.svg",
+  Docker: "/docker.png",
   JavaScript: "/js-svgrepo-com.svg",
   AWS: "/icons8-aws-logo.svg",
   Azure: "/icons8-azure.svg",
@@ -69,8 +69,13 @@ function SkillCard({ skill, index }) {
       className="group"
     >
       <div
-        className="bg-white  p-4  transition-all duration-200 cursor-default  flex flex-col items-center space-y-3"
-      
+        className="p-4 transition-all duration-200 cursor-default flex flex-col items-center space-y-3"
+        style={{
+          background: theme.cardBg,
+          border: `1px solid ${theme.border}`,
+          borderRadius: "14px",
+          boxShadow: `0 1px 3px ${theme.shadow}`,
+        }}
         onMouseEnter={(e) => {
           e.currentTarget.style.boxShadow = `0 4px 12px ${theme.shadowHover}`;
           e.currentTarget.style.borderColor = theme.accent;
@@ -112,19 +117,19 @@ function TabButton({ category, isActive, onClick, description }) {
       whileHover={{ scale: 1.01 }}
       whileTap={{ scale: 0.99 }}
       onClick={onClick}
-      className={`relative px-6 py-3 rounded-lg font-medium transition-all duration-200 text-left ${
-        isActive ? 'text-white' : 'text-gray-700 hover:text-gray-900'
-      }`}
+      className="relative px-6 py-3 rounded-lg font-medium transition-all duration-200 text-left"
       style={{
-        backgroundColor: isActive ? theme.accent : theme.cardBg,
+        background: isActive ? theme.accentLight : theme.cardBg,
         border: `1px solid ${isActive ? theme.accent : theme.border}`,
+        color: isActive ? theme.text : theme.textSecondary,
         boxShadow: isActive ? `0 2px 8px ${theme.shadowHover}` : `0 1px 3px ${theme.shadow}`,
       }}
     >
       <div>
         <div className="text-sm font-semibold mb-1">{category}</div>
         <div
-          className={`text-xs ${isActive ? 'text-blue-100' : 'text-gray-500'}`}
+          className="text-xs"
+          style={{ color: isActive ? theme.textMuted : theme.textSecondary }}
         >
           {description}
         </div>
@@ -140,7 +145,7 @@ export default function SkillsSection() {
     <section
       id="skills"
       className="w-full py-16 px-4 sm:px-8 md:px-16"
-      style={{ backgroundColor: theme.bg }}
+      style={{ background: theme.bg }}
     >
       <div className="max-w-5xl mx-auto">
         {/* Header */}
@@ -194,7 +199,7 @@ export default function SkillsSection() {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="rounded-xl p-8"
             style={{
-              backgroundColor: theme.cardBg,
+              background: theme.cardBg,
               border: `1px solid ${theme.border}`,
               boxShadow: `0 2px 8px ${theme.shadow}`,
             }}
@@ -219,39 +224,7 @@ export default function SkillsSection() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Skills Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4"
-        >
-          {Object.entries(skillCategories).map(([category, data]) => (
-            <div
-              key={category}
-              className="rounded-lg p-6 text-center"
-              style={{
-                backgroundColor: theme.cardBg,
-                border: `1px solid ${theme.border}`,
-                boxShadow: `0 1px 3px ${theme.shadow}`,
-              }}
-            >
-              <div
-                className="text-2xl font-bold mb-1"
-                style={{ color: theme.accent }}
-              >
-                {data.skills.length}
-              </div>
-              <div
-                className="text-sm font-medium"
-                style={{ color: theme.textSecondary }}
-              >
-                {category}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+
       </div>
     </section>
   );

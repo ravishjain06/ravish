@@ -1,0 +1,69 @@
+[
+  {
+    "title": "Movya AI Platform",
+    "description": "An enterprise AI system with real-time analytics, secure authentication, and deep system integrations.",
+    "bullets": [
+      "⚡ High-performance micro architecture",
+      "🔐 Secure user management",
+      "📊 Live analytics dashboard",
+      "🧠 Multi-model AI integration"
+    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express"],
+    "images": [
+      "/public/Movya-ai1.png",
+      "/public/Movya-ai2.png",
+      "/public/Movya-Attendace4.png"
+    ],
+    "link": "#"
+  },
+  {
+    "title": "Attendance System",
+    "description": "A modern attendance platform with analytics, multi-device support, and clean enterprise UI.",
+    "bullets": [
+      "🛡️ High-security attendance logs",
+      "📱 Mobile-ready UI",
+      "📊 Smart analytics & insights",
+      "🎨 Minimal & intuitive interface"
+    ],
+    "tech": ["React", "Node.js", "MongoDB"],
+    "images": [
+      "/public/Movya-Attendace1.png",
+      "/public/Movya-Attendace2.png",
+      "/public/Movya-Attendace5.png"
+    ],
+    "link": "#"
+  },
+  {
+    "title": "Blog Platform",
+    "description": "A smooth, minimal blog platform engineered for reading comfort, SEO and fast performance.",
+    "bullets": [
+      "✍️ Markdown + editor",
+      "👤 Profiles & engagement",
+      "🚀 Ultra-fast rendering",
+      "🎨 Clean, minimal experience"
+    ],
+    "tech": ["React", "Next.js", "MongoDB"],
+    "images": [
+      "/public/Movya-Attendace1.png",
+      "/public/Movya-Attendace2.png",
+      "/public/Movya-Attendace5.png"
+    ],
+    "link": "#"
+  },
+  {
+    "title": "Portfolio Website",
+    "description": "A personal portfolio website showcasing skills, experience, and contact information.",
+    "bullets": [
+      "🌐 Responsive design",
+      "📄 Resume download",
+      "🖼️ Project gallery",
+      "💬 Contact form"
+    ],
+    "tech": ["React", "CSS", "EmailJS"],
+    "images": [
+      "/public/portfolio1.png",
+      "/public/portfolio2.png"
+    ],
+    "link": "#"
+  }
+]

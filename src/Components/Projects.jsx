@@ -1,36 +1,224 @@
-import React from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import projectsData from "./project.json";
 
 const theme = {
-  bg: "#fafafa",
-  cardBg: "#ffffff",
-  border: "#e5e7eb",
-  accent: "#3b82f6",
-  accentLight: "#dbeafe",
-  text: "#111827",
-  textSecondary: "#6b7280",
-  textMuted: "#9ca3af",
-  shadow: "rgba(0, 0, 0, 0.04)",
-  shadowHover: "rgba(0, 0, 0, 0.12)"
+  bg: "linear-gradient(180deg, #000000 0%, #0a0a0a 50%, #000000 100%)",
+  cardBg: "rgba(20,20,20,0.65)",
+  border: "rgba(255,255,255,0.05)",
+  accent: "#cfcfcf",
+  accentLight: "rgba(200,200,200,0.08)",
+  text: "#ffffff",
+  textSecondary: "#d6d6d6",
+  textMuted: "#9b9b9b",
+  shadow: "rgba(0, 0, 0, 0.4)",
+  shadowHover: "rgba(0, 0, 0, 0.6)"
 };
 
-const ProjectSection = ({ title, description, images, bullets, link, tags }) => {
-  const containerRef = React.useRef(null);
+// Simple carousel for mobile
+function ImageCarousel({ images, imgHeight = 260 }) {
+  const [current, setCurrent] = useState(0);
 
+  // Auto-scroll effect
+  React.useEffect(() => {
+    if (!images || images.length < 2) return;
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [images]);
+
+  if (!images || images.length === 0) return null;
+  return (
+    <div style={{ position: "relative", width: "100%", marginBottom: "18px" }}>
+      <img
+        src={images[current]}
+        alt=""
+        style={{
+          width: "100%",
+          height: `${imgHeight}px`,
+          objectFit: "cover",
+          borderRadius: "18px",
+          boxShadow: "0 6px 24px rgba(0,0,0,0.4)",
+        }}
+      />
+
+      {/* Controls positioned below the image */}
+      {images.length > 1 && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: "12px",
+            padding: "0 4px",
+          }}
+        >
+          {/* Centered arrow buttons */}
+          <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+            <button
+              onClick={() => setCurrent((current - 1 + images.length) % images.length)}
+              style={{
+                background: "rgba(20,20,20,0.85)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "32px",
+                height: "32px",
+                fontSize: "1.2rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.18)",
+              }}
+              aria-label="Previous"
+            >
+              ‹
+            </button>
+            <button
+              onClick={() => setCurrent((current + 1) % images.length)}
+              style={{
+                background: "rgba(20,20,20,0.85)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "50%",
+                width: "32px",
+                height: "32px",
+                fontSize: "1.2rem",
+                cursor: "pointer",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.18)",
+              }}
+              aria-label="Next"
+            >
+              ›
+            </button>
+          </div>
+
+          {/* Right: Dots */}
+          <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
+            {images.map((_, idx) => (
+              <span
+                key={idx}
+                style={{
+                  width: "8px",
+                  height: "8px",
+                  borderRadius: "50%",
+                  background: idx === current ? "#fff" : "rgba(20,20,20,0.85)",
+                  opacity: idx === current ? 1 : 0.7,
+                  transition: "background 0.2s",
+                  display: "inline-block",
+                  cursor: "pointer",
+                  boxShadow: "0 2px 8px rgba(0,0,0,0.18)",
+                  border: idx === current ? "1px solid #fff" : "1px solid #888",
+                }}
+                onClick={() => setCurrent(idx)}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// Responsive Project Section
+const ProjectSection = ({ title, description, images, bullets, link, tech }) => {
+  // Responsive for mobile and all iPads (including iPad Pro)
+  const [isMobileOrTablet, setIsMobileOrTablet] = useState(
+    window.innerWidth <= 1024 // iPad Pro width is 1024px, so include it
+  );
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobileOrTablet(window.innerWidth <= 1024);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Mobile & Tablet & iPad Pro layout: carousel + content below
+  if (isMobileOrTablet) {
+    // Detect tablet (iPad Air/Mini/Pro)
+    const width = window.innerWidth;
+    const isTablet = width >= 600 && width <= 1024;
+    const isMobile = width < 600;
+
+    let imgHeight = 260; // default
+    if (isTablet) imgHeight = 620; // tablet height
+    if (isMobile) imgHeight = 260; // mobile height
+
+    return (
+      <section style={{ width: "100%", padding: "24px 0", marginBottom: "16px" }}>
+        <ImageCarousel
+          images={images}
+          imgHeight={imgHeight}
+        />
+        <div style={{ padding: "0 8px" }}>
+          <h2 style={{ fontSize: "1.5rem", fontWeight: "400", color: theme.text, marginBottom: "10px" }}>{title}</h2>
+          <p style={{ color: theme.textSecondary, fontSize: "1rem", marginBottom: "12px" }}>{description}</p>
+          <ul style={{ marginBottom: "12px", paddingLeft: "18px", color: theme.textSecondary }}>
+            {bullets.map((b, idx) => (
+              <li key={idx} style={{ marginBottom: "6px" }}>{b}</li>
+            ))}
+          </ul>
+          <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginBottom: "10px" }}>
+            {tech.slice(0, 4).map((tag, idx) => (
+              <span
+                key={idx}
+                style={{
+                  padding: "6px 14px",
+                  borderRadius: "8px",
+                  background: theme.accentLight,
+                  color: theme.accent,
+                  border: `1px solid ${theme.accent}`,
+                  fontSize: "0.92rem",
+                  fontWeight: "500",
+                }}
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+          <a
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-block",
+              marginTop: "8px",
+              padding: "8px 22px",
+              background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)",
+              color: "#fff",
+              borderRadius: "8px",
+              fontSize: "1rem",
+              fontWeight: "500",
+              textDecoration: "none",
+              boxShadow: "0 2px 10px rgba(0,0,0,0.3)",
+            }}
+          >
+            View Project
+          </a>
+        </div>
+      </section>
+    );
+  }
+
+  // Desktop layout: original
   return (
     <section
-      ref={containerRef}
       style={{
         width: "100%",
         minHeight: "120vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "flex-start",
-        padding: "32px 0",
-        gap: "28px",
+        padding: "40px 0",
+        gap: "40px",
       }}
     >
-      {/* LEFT: RECTANGLE CARD */}
+      {/* LEFT: Premium Card */}
       <div
         style={{
           width: "40%",
@@ -38,80 +226,95 @@ const ProjectSection = ({ title, description, images, bullets, link, tags }) => 
           top: "100px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
         }}
       >
         <div
           style={{
             background: theme.cardBg,
-            borderRadius: "18px",
-            boxShadow: `0 4px 24px ${theme.shadowHover}`,
-            padding: "32px 28px",
-            width: "100%",
-            marginBottom: "24px",
+            backdropFilter: "blur(18px)",
+            borderRadius: "24px",
             border: `1px solid ${theme.border}`,
-            display: "flex",
-            flexDirection: "column",
-            gap: "18px",
+            boxShadow: "0 12px 40px rgba(0,0,0,0.55)",
+            padding: "40px 36px",
+            width: "100%",
+            marginBottom: "30px",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <h2
+          {/* Subtle platinum glow */}
+          <div
             style={{
-              fontSize: "2rem",
-              fontWeight: "600",
-              marginBottom: "8px",
-              color: theme.text,
-              letterSpacing: "-0.5px",
+              position: "absolute",
+              inset: 0,
+              background: "radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 65%)",
+              pointerEvents: "none",
             }}
-          >
-            {title}
-          </h2>
-          <p
-            style={{
-              fontSize: "1.08rem",
-              color: theme.textSecondary,
-              marginBottom: "12px",
-              lineHeight: "1.7",
-            }}
-          >
-            {description}
-          </p>
+          />
+
+          {/* Neutral platinum button */}
           <a
             href={link}
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: "inline-block",
-              padding: "10px 24px",
-              background: theme.accent,
+              position: "absolute",
+              top: "30px",
+              right: "30px",
+              padding: "10px 26px",
+              background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)",
               color: "#fff",
-              borderRadius: "8px",
+              borderRadius: "10px",
+              fontSize: "1rem",
               fontWeight: "500",
-              fontSize: "0.98rem",
               textDecoration: "none",
-              boxShadow: "0 2px 8px rgba(59,130,246,0.08)",
-              border: "none",
-              letterSpacing: "0.2px",
+              boxShadow: "0 4px 18px rgba(0,0,0,0.4)",
             }}
           >
             View Project
           </a>
+
+          <h2
+            style={{
+              fontSize: "2.4rem",
+              fontWeight: "400", // Changed from 600 to 400
+              marginBottom: "12px",
+              color: theme.text,
+              letterSpacing: "-0.6px",
+            }}
+          >
+            {title}
+          </h2>
+
+          <p
+            style={{
+              fontSize: "0.93rem", // Slightly reduced font size
+              color: theme.textSecondary,
+              lineHeight: "1.7",
+              marginBottom: "14px",
+            }}
+          >
+            {description}
+            <br />
+            Uses advanced AI models for insights, automates workflows, and ensures robust security. Seamless integrations and scalable architecture help organizations operate efficiently.
+          </p>
         </div>
-        {/* Bullet points and tags below the card */}
+
+        {/* Bullet points */}
         <ul
           style={{
-            marginBottom: "10px",
+            margin: "18px 0 10px 0",
             paddingLeft: "16px",
             color: theme.text,
-            fontSize: "0.98rem",
-            lineHeight: "1.7",
+            fontSize: "1rem",
+            lineHeight: "1.8",
           }}
         >
-          {bullets && bullets.map((b, idx) => (
+          {bullets.map((b, idx) => (
             <li
               key={idx}
               style={{
-                marginBottom: "7px",
+                marginBottom: "8px",
                 color: theme.textSecondary,
                 listStyle: "disc",
               }}
@@ -120,37 +323,35 @@ const ProjectSection = ({ title, description, images, bullets, link, tags }) => 
             </li>
           ))}
         </ul>
-        {tags && (
-          <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "8px" }}>
-            {tags.map((tag, idx) => (
-              <span
-                key={idx}
-                style={{
-                  padding: "7px 18px",
-                  borderRadius: "20px",
-                  background: theme.accentLight,
-                  color: theme.accent,
-                  fontSize: "0.98rem",
-                  border: `1px solid ${theme.accent}`,
-                  marginBottom: "6px",
-                  display: "inline-block",
-                }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-        )}
+
+        {/* Tech tags */}
+        <div style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginTop: "10px" }}>
+          {tech.slice(0, 4).map((tag, idx) => (
+            <span
+              key={idx}
+              style={{
+                padding: "8px 20px",
+                borderRadius: "8px", // Changed from 22px to 8px for slightly rounded
+                background: theme.accentLight,
+                color: theme.accent,
+                border: `1px solid ${theme.accent}`,
+                fontSize: "0.95rem",
+                fontWeight: "500",
+              }}
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
       </div>
-      {/* RIGHT: IMAGES WITH EQUAL GAP */}
+
+      {/* RIGHT: Premium Images */}
       <div
         style={{
           width: "54%",
-          paddingLeft: "0px",
           display: "flex",
           flexDirection: "column",
-          alignItems: "flex-start",
-          gap: "24px",
+          gap: "26px",
         }}
       >
         {images.map((img, i) => (
@@ -158,11 +359,12 @@ const ProjectSection = ({ title, description, images, bullets, link, tags }) => 
             key={i}
             style={{
               width: "100%",
-              height: "44vh",
-              borderRadius: "12px",
+              height: "60vh",
+              borderRadius: "22px",
               overflow: "hidden",
-              boxShadow: "0 4px 16px rgba(0,0,0,0.07)",
-              marginBottom: "0px",
+              position: "relative",
+              boxShadow: "0 10px 40px rgba(0,0,0,0.6)",
+              background: "#0a0a0a",
             }}
           >
             <img
@@ -172,7 +374,18 @@ const ProjectSection = ({ title, description, images, bullets, link, tags }) => 
                 width: "100%",
                 height: "100%",
                 objectFit: "cover",
-                display: "block",
+                transition: "filter 0.6s ease", // Only filter transition remains
+              }}
+            />
+
+            {/* Premium glossy overlay */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(180deg, rgba(255,255,255,0.06), rgba(0,0,0,0.65))",
+                pointerEvents: "none",
               }}
             />
           </div>
@@ -183,85 +396,79 @@ const ProjectSection = ({ title, description, images, bullets, link, tags }) => 
 };
 
 export default function Projects() {
+  const [showAll, setShowAll] = useState(false);
+  const projects = projectsData;
+  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+
   return (
     <section
+      id="projects" // <-- Add this line
       className="w-full py-8 px-2 sm:px-4 md:px-8"
-      style={{ backgroundColor: theme.bg }}
+      style={{
+        background: theme.bg,
+        backgroundAttachment: "fixed",
+      }}
     >
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
+      <div className="w-full max-w-none">
+        {/* HEADER */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-8"
+          className="text-center mb-10"
         >
           <h2
-            className="text-2xl sm:text-3xl font-bold mb-3 tracking-tight"
-            style={{ color: theme.text }}
+            style={{
+              color: theme.text,
+              fontSize: "2.6rem",
+              fontWeight: "700",
+              letterSpacing: "-0.7px",
+            }}
           >
-            Projects & Case Studies
+            Featured Work
           </h2>
           <p
-            className="text-base max-w-xl mx-auto leading-relaxed"
-            style={{ color: theme.textSecondary }}
+            style={{
+              color: theme.textSecondary,
+              maxWidth: "720px",
+              margin: "0 auto",
+              marginTop: "10px",
+              fontSize: "1.1rem",
+              lineHeight: "1.75",
+            }}
           >
-            Explore a selection of my professional work, including modern platforms, e-commerce experiences, and minimal blog solutions. Each project demonstrates my focus on clean UI, performance, and best practices.
+            Explore a curated selection of my work – crafted with precision, premium UI, and high-performance architecture.
           </p>
         </motion.div>
 
-        <ProjectSection
-          title="Movya AI Platform"
-          description="An advanced AI platform for enterprise solutions, featuring real-time analytics, secure authentication, and seamless integration."
-          bullets={[
-            "⚡ Fast and scalable architecture",
-            "🔒 Secure authentication and user management",
-            "📊 Real-time analytics dashboard",
-            "🧠 Integrates with multiple AI models",
-          ]}
-          images={[
-            "/public/Movya-ai1.png",
-            "/public/Movya-ai2.png",
-                       "/public/Movya-Attendace4.png",
+        {/* PROJECT SECTIONS */}
+        {displayedProjects.map((project, idx) => (
+          <ProjectSection key={idx} {...project} />
+        ))}
 
-          ]}
-          link="https://example.com/movya-ai"
-        />
-
-        <ProjectSection
-          title="Movya Attendance System"
-          description="A robust attendance management system with multi-device support, analytics, and a clean, minimal UI for HR and employees."
-          bullets={[
-            "🛡️ Secure attendance tracking",
-            "📱 Mobile and desktop support",
-            "📊 Attendance analytics and reports",
-            "🎨 Clean, minimal UI",
-          ]}
-          images={[
-            "/public/Movya-Attendace1.png",
-            "/public/Movya-Attendace2.png",
-            "/public/Movya-Attendace5.png",
-          ]}
-          link="https://example.com/movya-attendance"
-        />
-
-        {/* Example third project, you can update/remove as needed */}
-        <ProjectSection
-          title="Blog Platform"
-          description="A minimal blog platform with markdown support, user profiles, and smooth transitions. Designed for performance and readability."
-          bullets={[
-            "✍️ Markdown editor for posts",
-            "👤 User profiles and comments",
-            "🚀 Fast page loads and SEO optimized",
-            "🎨 Clean, minimal UI",
-          ]}
-          images={[
-            "/images/p3-1.jpg",
-            "/images/p3-2.jpg",
-          ]}
-          link="https://example.com/project3"
-        />
+        {/* View More Button */}
+        <div style={{ textAlign: "center", marginTop: "32px" }}>
+          {!showAll && (
+            <button
+              onClick={() => setShowAll(true)}
+              style={{
+                padding: "12px 32px",
+                background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)",
+                color: "#fff",
+                borderRadius: "12px",
+                fontSize: "1.1rem",
+                fontWeight: "500",
+                border: "none",
+                cursor: "pointer",
+                boxShadow: "0 4px 18px rgba(0,0,0,0.4)",
+                transition: "background 0.2s",
+              }}
+            >
+              View More
+            </button>
+          )}
+        </div>
       </div>
     </section>
   );

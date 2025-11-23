@@ -84,7 +84,7 @@ const Navbar = () => {
       <div
         className={`
           pointer-events-auto w-[98%] sm:w-[96%] md:w-[92%] lg:w-[84%] xl:w-[72%] mt-4
-          flex items-center justify-between px-2 sm:px-4 md:px-8 lg:px-16 xl:px-24 py-3
+          flex items-center justify-between px-6 sm:px-4 md:px-8 lg:px-16 xl:px-24 py-3
           transition-all duration-300
           rounded-full shadow-lg
           ${scrolled
@@ -110,32 +110,90 @@ const Navbar = () => {
         {/* Desktop menu */}
         <ul className="hidden sm:flex gap-6 text-zinc-200 font-medium">
           <li>
-            <a href="#about" className="hover:text-white transition-colors duration-200">About</a>
+            <a
+              href="#skills"
+              className="hover:text-white transition-colors duration-200"
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Skills
+            </a>
           </li>
           <li>
-            <a href="#skills" className="hover:text-white transition-colors duration-200">Skills</a>
+            <a
+              href="#projects"
+              className="hover:text-white transition-colors duration-200"
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Projects
+            </a>
           </li>
           <li>
-            <a href="#projects" className="hover:text-white transition-colors duration-200">Projects</a>
-          </li>
-          <li>
-            <a href="#contact" className="hover:text-white transition-colors duration-200">Contact</a>
+            <a
+              href="#contact"
+              className="hover:text-white transition-colors duration-200"
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              Contact
+            </a>
           </li>
         </ul>
         {/* Mobile menu */}
         {menuOpen && (
-          <ul className="absolute top-[calc(100%+12px)] left-1/2 -translate-x-1/2 w-[92vw] max-w-sm bg-zinc-900/90 backdrop-blur-md rounded-2xl flex flex-col items-center gap-6 py-6 sm:hidden text-zinc-200 font-medium shadow-2xl z-50">
-            <li>
-              <a href="#about" className="hover:text-white transition-colors duration-200" onClick={() => setMenuOpen(false)}>About</a>
+          <ul
+            className="absolute top-[calc(100%+12px)] left-0 right-0 mx-auto w-full max-w-full bg-zinc-900/90 backdrop-blur-md rounded-2xl flex flex-col items-center gap-6 py-6  sm:hidden text-zinc-200 font-medium shadow-2xl z-50 transition-all duration-300"
+            style={{
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            
+            }}
+          >
+            <li className="w-full">
+              <a
+                href="#skills"
+                className="hover:text-white transition-colors duration-200 block w-full text-center"
+                onClick={e => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Skills
+              </a>
             </li>
-            <li>
-              <a href="#skills" className="hover:text-white transition-colors duration-200" onClick={() => setMenuOpen(false)}>Skills</a>
+            <li className="w-full">
+              <a
+                href="#projects"
+                className="hover:text-white transition-colors duration-200 block w-full text-center"
+                onClick={e => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Projects
+              </a>
             </li>
-            <li>
-              <a href="#projects" className="hover:text-white transition-colors duration-200" onClick={() => setMenuOpen(false)}>Projects</a>
-            </li>
-            <li>
-              <a href="#contact" className="hover:text-white transition-colors duration-200" onClick={() => setMenuOpen(false)}>Contact</a>
+            <li className="w-full">
+              <a
+                href="#contact"
+                className="hover:text-white transition-colors duration-200 block w-full text-center"
+                onClick={e => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Contact
+              </a>
             </li>
           </ul>
         )}
