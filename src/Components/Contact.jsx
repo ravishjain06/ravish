@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
-import { FaLinkedin, FaGithub, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaLinkedin, FaGithub } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
 
 // Initialize EmailJS with your public key
@@ -238,10 +238,8 @@ const countries = [
 ];
 
 const socialLinks = [
-  { icon: FaLinkedin, url: "https://linkedin.com/in/ravishjain988" },
-  { icon: FaGithub, url: "https://github.com/ravishjain988" },
-  { icon: FaFacebook, url: "https://facebook.com/ravishjain988" },
-  { icon: FaInstagram, url: "https://instagram.com/ravishjain988" },
+  { icon: FaLinkedin, url: "https://www.linkedin.com/in/ravish-jain-5840712b4/" },
+  { icon: FaGithub, url: "https://github.com/ravishjain06" },
   { icon: SiLeetcode, url: "https://leetcode.com/ravishjain988" },
 ];
 
