@@ -1,23 +1,42 @@
 [
   {
-    "title": "Movya AI Platform",
-    "description": "An enterprise AI system with real-time analytics, secure authentication, and deep system integrations.",
+    "title": "Vakta AI Voice Agent",
+    "description": "Conversational AI voice agent for customer support, automating queries and providing instant responses.",
     "bullets": [
-      "⚡ High-performance micro architecture",
-      "🔐 Secure user management",
-      "📊 Live analytics dashboard",
-      "🧠 Multi-model AI integration"
+      "🎤 Natural language understanding",
+      "🤖 Automated customer support",
+      "🔊 Real-time voice synthesis",
+      "📈 Analytics for conversations"
     ],
-    "tech": ["React", "Node.js", "MongoDB", "Express"],
+    "tech": ["React", "Node.js", "TensorFlow", "Web Speech API"],
     "images": [
-      "/public/Movya-ai1.png",
-      "/public/Movya-ai2.png",
-      "/public/Movya-Attendace4.png"
+      "/vakta1.png",
+      "/vakta2.png",
+      "/vakta3.png"
     ],
     "link": "#"
   },
   {
-    "title": "Attendance System",
+    "title": "Krushiratna",
+    "description": "A smart agriculture platform for farmers, offering crop advisory, weather updates, and market prices.",
+    "bullets": [
+      "☁️ Real-time weather updates tailored for local conditions",
+      "🌍 Multi-language support for a diverse user base",
+      "🤖 Integrated AI assistant for instant query resolution",
+      "🛒 Built-in ecommerce platform for agri-inputs and produce sales",
+      "📄 OCR support for document and bill scanning",
+      "🛠️ Comprehensive admin panel for platform management"
+    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express"],
+    "images": [
+      "/krushiratna1.png",
+      "/krushiratna2.png",
+      "/krushiratna3.png"
+    ],
+    "link": "#"
+  },
+  {
+    "title": "HRM System",
     "description": "A modern attendance platform with analytics, multi-device support, and clean enterprise UI.",
     "bullets": [
       "🛡️ High-security attendance logs",
@@ -27,42 +46,26 @@
     ],
     "tech": ["React", "Node.js", "MongoDB"],
     "images": [
-      "/public/Movya-Attendace1.png",
-      "/public/Movya-Attendace2.png",
-      "/public/Movya-Attendace5.png"
+      "/Movya-Attendace1.png",
+      "/Movya-Attendace2.png",
+      "/Movya-Attendace5.png"
     ],
     "link": "#"
   },
   {
-    "title": "Blog Platform",
-    "description": "A smooth, minimal blog platform engineered for reading comfort, SEO and fast performance.",
+    "title": "Movya AI Platform",
+    "description": "An enterprise AI system with real-time analytics, secure authentication, and deep system integrations.",
     "bullets": [
-      "✍️ Markdown + editor",
-      "👤 Profiles & engagement",
-      "🚀 Ultra-fast rendering",
-      "🎨 Clean, minimal experience"
+      "⚡ High-performance micro architecture",
+      "🔐 Secure user management",
+      "📊 Live analytics dashboard",
+      "🧠 Multi-model AI integration"
     ],
-    "tech": ["React", "Next.js", "MongoDB"],
+    "tech": ["React", "React Native", "Node.js", "MongoDB", "Express"],
+    "tags": ["Web App"],
     "images": [
-      "/public/Movya-Attendace1.png",
-      "/public/Movya-Attendace2.png",
-      "/public/Movya-Attendace5.png"
-    ],
-    "link": "#"
-  },
-  {
-    "title": "Portfolio Website",
-    "description": "A personal portfolio website showcasing skills, experience, and contact information.",
-    "bullets": [
-      "🌐 Responsive design",
-      "📄 Resume download",
-      "🖼️ Project gallery",
-      "💬 Contact form"
-    ],
-    "tech": ["React", "CSS", "EmailJS"],
-    "images": [
-      "/public/portfolio1.png",
-      "/public/portfolio2.png"
+      "/Movya-ai1.png",
+      "/Movya-ai2.png"
     ],
     "link": "#"
   }
