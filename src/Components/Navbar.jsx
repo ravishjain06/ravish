@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Link, useLocation } from 'react-router-dom';
 
 const lineVariants = {
   hidden: {
@@ -94,7 +95,9 @@ const Navbar = () => {
         `}
       >
         <div className="flex items-center">
-          <RLogo width={40} height={40} animated={true} />
+          <Link to="/">
+            <RLogo width={40} height={40} animated={true} />
+          </Link>
           {/* <span className="text-lg sm:text-xl font-bold text-white tracking-tight">Ravish Jain</span> */}
         </div>
         {/* Hamburger for mobile */}
@@ -109,22 +112,36 @@ const Navbar = () => {
         </button>
         {/* Desktop menu */}
         <ul className="hidden sm:flex gap-6 text-zinc-200 font-medium">
-          {['Skills', 'Projects', 'Contact'].map((item) => (
-            <li key={item} className="relative group">
-              <a
-                href={`#${item.toLowerCase()}`}
-                className="transition-colors duration-200 relative z-10"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-                }}
-              >
-                {item}
-              </a>
-              {/* Hover underline */}
-              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
-            </li>
-          ))}
+          <li className="relative group">
+            <Link to="/" className="transition-colors duration-200 relative z-10">Home</Link>
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <Link to="/projects" className="transition-colors duration-200 relative z-10">All Projects</Link>
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <a
+              href="#skills"
+              className="transition-colors duration-200 relative z-10"
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >Skills</a>
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+          </li>
+          <li className="relative group">
+            <a
+              href="#contact"
+              className="transition-colors duration-200 relative z-10"
+              onClick={e => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >Contact</a>
+            <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+          </li>
         </ul>
         {/* Mobile menu */}
         {menuOpen && (
@@ -135,22 +152,38 @@ const Navbar = () => {
               marginRight: 'auto',
             }}
           >
-            {['Skills', 'Projects', 'Contact'].map((item) => (
-              <li key={item} className="w-full relative group">
-                <a
-                  href={`#${item.toLowerCase()}`}
-                  className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    setMenuOpen(false);
-                    document.getElementById(item.toLowerCase())?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                >
-                  {item}
-                </a>
-                <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
-              </li>
-            ))}
+            <li className="w-full relative group">
+              <Link to="/" className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10" onClick={() => setMenuOpen(false)}>Home</Link>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="w-full relative group">
+              <Link to="/projects" className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10" onClick={() => setMenuOpen(false)}>All Projects</Link>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="w-full relative group">
+              <a
+                href="#skills"
+                className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
+                onClick={e => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >Skills</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+            </li>
+            <li className="w-full relative group">
+              <a
+                href="#contact"
+                className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
+                onClick={e => {
+                  e.preventDefault();
+                  setMenuOpen(false);
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >Contact</a>
+              <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
+            </li>
           </ul>
         )}
       </div>

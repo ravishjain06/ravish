@@ -1,72 +1,191 @@
 [
   {
-    "title": "Vakta AI Voice Agent",
-    "description": "Conversational AI voice agent for customer support, automating queries and providing instant responses.",
+    "title": "WEAREX – Fashion Ecommerce",
+    "tag": "Ecommerce",
+    "description": "A premium fashion ecommerce platform with curated collections for Men, Women, Gen Z & Classic Luxury — featuring advanced filtering, cart management, order tracking and Stripe-powered checkout.",
+    "longDescription": "WEAREX is a full-stack ecommerce platform built for a fashion brand. The platform supports multiple product collections segmented by audience — Men, Women, Gen Z and Classic Luxury. Users can browse products, filter by category and price range, manage their wishlist, add items to the cart with size selection, apply discount codes, and complete purchases via Stripe. Post-purchase, users get a full order history with item details, shipping address and payment method. The admin side handles product management and order fulfillment.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
     "bullets": [
-      "🎤 Natural language understanding",
-      "🤖 Automated customer support",
-      "🔊 Real-time voice synthesis",
-      "📈 Analytics for conversations"
+      "👗 Multi-collection catalogue: Men, Women, Gen Z & Classic Luxury",
+      "🔍 Advanced filters by category, price range and brand",
+      "🛒 Cart with size selection, quantity controls & discount codes",
+      "📦 Order history with tracking, shipping address & payment method",
+      "💳 Stripe payment gateway with secure checkout flow",
+      "❤️ Wishlist management & user profile page",
+      "🔐 JWT-based authentication with protected routes",
+      "📱 Fully responsive across all screen sizes"
     ],
-    "tech": ["React", "Node.js", "TensorFlow", "Web Speech API"],
-    "images": [
-      "/vakta1.png",
-      "/vakta2.png",
-      "/vakta3.png"
+    "tech": ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT", "Tailwind CSS"],
+    "images": ["/WEAREX1.png", "/WEAREX2.png", "/WEAREX3.png"],
+    "link": "#"
+  },
+  {
+    "title": "Vakta AI Voice Agent",
+    "tag": "AI / SaaS",
+    "description": "A production-ready conversational AI voice agent built for customer support automation — delivering real-time voice synthesis, NLU and actionable analytics.",
+    "longDescription": "Vakta is an AI-powered voice agent designed to replace traditional customer support workflows. It understands natural language queries, provides instant spoken responses via real-time voice synthesis, and escalates complex issues to human agents. The platform includes a dashboard for businesses to monitor conversation analytics, track resolution rates, and configure custom responses. It was built to support multiple languages and scales seamlessly across industries.",
+    "role": "Full Stack Developer",
+    "duration": "3 months",
+    "bullets": [
+      "🎤 Natural language understanding with intent detection",
+      "🤖 Automated customer support with smart escalation",
+      "🔊 Real-time voice synthesis with low latency",
+      "📈 Conversation analytics & resolution tracking dashboard",
+      "🌐 Multi-language support for global reach",
+      "⚙️ Configurable response flows per business use case",
+      "📊 Admin panel to monitor live agent sessions",
+      "🔐 Secure API with rate limiting & auth"
     ],
+    "tech": ["React", "Node.js", "TensorFlow", "Web Speech API", "Express", "MongoDB"],
+    "images": ["/vakta1.png", "/vakta2.png", "/vakta3.png"],
     "link": "https://vakta.tech/"
   },
   {
     "title": "Krushiratna",
-    "description": "A smart agriculture platform for farmers, offering crop advisory, weather updates, and market prices.",
+    "tag": "AgriTech",
+    "description": "A smart agriculture super-app for farmers — combining AI advisory, real-time weather, market pricing, ecommerce, OCR scanning and a full admin panel.",
+    "longDescription": "Krushiratna is a comprehensive agricultural platform aimed at empowering Indian farmers with technology. It delivers hyper-local weather forecasts, AI-driven crop advisory, live market prices, and an integrated ecommerce store for buying agri-inputs and selling produce. The app supports multi-language UI for regional accessibility, an OCR module for scanning documents and bills, and a robust admin panel for managing users, products and content. Built with a mobile-first approach to reach farmers on any device.",
+    "role": "Full Stack Developer",
+    "duration": "4 months",
     "bullets": [
-      "☁️ Real-time weather updates tailored for local conditions",
-      "🌍 Multi-language support for a diverse user base",
-      "🤖 Integrated AI assistant for instant query resolution",
-      "🛒 Built-in ecommerce platform for agri-inputs and produce sales",
-      "📄 OCR support for document and bill scanning",
-      "🛠️ Comprehensive admin panel for platform management"
+      "☁️ Hyper-local real-time weather updates",
+      "🌾 AI-powered crop advisory & disease detection",
+      "💹 Live market price tracking for produce",
+      "🌍 Multi-language support (Hindi, Gujarati, English & more)",
+      "🤖 Integrated AI chatbot for instant query resolution",
+      "🛒 Ecommerce store for agri-inputs and produce",
+      "📄 OCR module for document and bill scanning",
+      "🛠️ Comprehensive admin panel for full platform management"
     ],
-    "tech": ["React", "Node.js", "MongoDB", "Express"],
-    "images": [
-      "/krushiratna1.png",
-      "/krushiratna2.png",
-      "/krushiratna3.png"
-    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "OpenAI API", "Tailwind CSS"],
+    "images": ["/krushiratna1.png", "/krushiratna2.png", "/krushiratna3.png"],
     "link": "https://krushiratn.com/"
   },
   {
     "title": "HRM System",
-    "description": "A modern attendance platform with analytics, multi-device support, and clean enterprise UI.",
+    "tag": "Enterprise",
+    "description": "A modern HR & attendance management platform with biometric-grade security, smart analytics and a clean enterprise UI built for growing teams.",
+    "longDescription": "The HRM System is an enterprise-grade attendance and HR management platform designed for mid-size organizations. It provides secure, tamper-proof attendance logging, role-based access for admins, managers and employees, and detailed analytics on attendance trends, late arrivals, and leaves. The system supports multi-device access, CSV export for payroll, and delivers a clean minimal interface that reduces the learning curve for non-technical staff.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
     "bullets": [
-      "🛡️ High-security attendance logs",
-      "📱 Mobile-ready UI",
-      "📊 Smart analytics & insights",
-      "🎨 Minimal & intuitive interface"
+      "🛡️ Tamper-proof high-security attendance logs",
+      "👤 Role-based access for Admin, Manager & Employee",
+      "📊 Smart analytics: trends, late arrivals & leave summaries",
+      "📱 Fully responsive across mobile & desktop",
+      "📥 CSV export for seamless payroll integration",
+      "🕐 Real-time attendance status updates",
+      "🗓️ Leave request & approval workflow",
+      "🎨 Minimal & intuitive enterprise UI"
     ],
-    "tech": ["React", "Node.js", "MongoDB"],
-    "images": [
-      "/Movya-Attendace1.png",
-      "/Movya-Attendace2.png",
-      "/Movya-Attendace5.png"
-    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "JWT", "Tailwind CSS"],
+    "images": ["/Movya-Attendace1.png", "/Movya-Attendace2.png", "/Movya-Attendace5.png"],
     "link": "#"
   },
   {
     "title": "Movya AI Platform",
-    "description": "An enterprise AI system with real-time analytics, secure authentication, and deep system integrations.",
+    "tag": "AI / Enterprise",
+    "description": "An enterprise AI platform with multi-model integration, real-time analytics, secure auth and a cross-platform React Native mobile app.",
+    "longDescription": "Movya is a scalable enterprise AI platform built to integrate multiple AI models into a single unified dashboard. It offers live analytics, secure user management with role-based permissions, and deep integrations with third-party services. The platform is available both as a web app (React) and a mobile app (React Native), ensuring seamless access across all devices. Its micro-architecture ensures high performance and easy horizontal scaling.",
+    "role": "Full Stack Developer",
+    "duration": "3 months",
     "bullets": [
-      "⚡ High-performance micro architecture",
-      "🔐 Secure user management",
-      "📊 Live analytics dashboard",
-      "🧠 Multi-model AI integration"
+      "⚡ High-performance micro-service architecture",
+      "🧠 Multi-model AI integration in a unified dashboard",
+      "🔐 Role-based secure user management & auth",
+      "📊 Live analytics with customizable widgets",
+      "📱 Cross-platform: React web + React Native mobile",
+      "🔗 Deep integrations with third-party APIs",
+      "🔄 Real-time data sync across devices",
+      "📋 Detailed audit logs for enterprise compliance"
     ],
-    "tech": ["React", "React Native", "Node.js", "MongoDB", "Express"],
-    "tags": ["Web App"],
-    "images": [
-      "/Movya-ai1.png",
-      "/Movya-ai2.png"
+    "tech": ["React", "React Native", "Node.js", "MongoDB", "Express", "JWT"],
+    "images": ["/Movya-ai1.png", "/Movya-ai2.png", "/Movya-Attendace3.png"],
+    "link": "#"
+  },
+  {
+    "title": "Job Portal",
+    "tag": "Web",
+    "description": "A full-featured job portal connecting employers and job seekers — with smart filtering, one-click applications, employer dashboards and real-time notifications.",
+    "longDescription": "This job portal bridges the gap between employers and job seekers with a clean, fast experience on both sides. Job seekers can search and filter listings by role, location, salary and type, build a profile, upload their resume and apply in one click. Employers get a dedicated dashboard to post jobs, review applications and manage candidates through a hiring pipeline. Real-time notifications keep both parties updated at every step.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
+    "bullets": [
+      "🔍 Advanced job search by role, location, salary & type",
+      "📋 One-click job applications with saved resume",
+      "🏢 Employer dashboard: post jobs & manage applicants",
+      "🔔 Real-time notifications for applications & updates",
+      "📄 Resume upload & rich profile builder",
+      "💼 Hiring pipeline: shortlist, interview & hire stages",
+      "🔐 JWT-based auth for both job seekers and employers",
+      "📱 Fully responsive for mobile job seekers"
     ],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "Socket.io", "JWT", "Tailwind CSS"],
+    "images": ["/job1.png", "/job2.png", "/job3.png"],
+    "link": "#"
+  },
+  {
+    "title": "Social Media Blog App",
+    "tag": "Social",
+    "description": "A full-featured social media and blogging platform — with rich-text posts, real-time feed, follows, likes, comments and media uploads.",
+    "longDescription": "This social media blog app combines the best of Twitter-style feeds with long-form blogging. Users can write rich-text posts, upload images and media, follow other creators, like and comment on posts, and discover trending content through an explore feed. Real-time updates via WebSockets ensure the feed feels live. The platform includes notification systems, user profiles, and a clean dark/light mode UI.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
+    "bullets": [
+      "✍️ Rich text blog editor with image embeds",
+      "❤️ Like, comment & share posts in real-time",
+      "👥 Follow / unfollow users & curated feed",
+      "🖼️ Image & media uploads with preview",
+      "🔎 Explore page with trending & recent posts",
+      "🔔 Real-time notifications via WebSockets",
+      "👤 User profiles with bio, follower & post count",
+      "🌗 Dark & light mode toggle"
+    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "Socket.io", "JWT", "Tailwind CSS"],
+    "images": ["/socialMedia1.png", "/socialMedia2.png", "/socialMedia3.png"],
+    "link": "#"
+  },
+  {
+    "title": "IcePops Ecommerce Website",
+    "tag": "Ecommerce",
+    "description": "A vibrant branded ecommerce platform for IcePops — with a full product catalogue, cart, discount codes, Stripe checkout and order tracking.",
+    "longDescription": "IcePops is a branded ecommerce website built for a food & beverage brand. It features a visually rich product catalogue with categories and filters, a smooth cart experience with discount code support, and a secure Stripe-powered checkout. Customers can track their orders, view order history and manage their account. The website was designed with a mobile-first, vibrant aesthetic that matches the brand's personality.",
+    "role": "Full Stack Developer",
+    "duration": "6 weeks",
+    "bullets": [
+      "🍭 Vibrant branded product catalogue with categories",
+      "🛒 Cart with quantity controls & discount codes",
+      "💳 Secure Stripe payment gateway integration",
+      "📦 Order tracking & full order history",
+      "👤 User account & address management",
+      "🔍 Product search & category filtering",
+      "📱 Mobile-first fully responsive design",
+      "⚡ Optimized for fast load and smooth UX"
+    ],
+    "tech": ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT", "Tailwind CSS"],
+    "images": ["/icepops1.png", "/icepops2.png", "/icepops3.png"],
+    "link": "#"
+  },
+  {
+    "title": "Bookora – Movie Ticket Booking",
+    "tag": "Web",
+    "description": "A BookMyShow-style movie ticket booking platform built with Django & React — featuring an interactive fan-carousel, live seat maps, movie detail pages with ratings, and location-aware show listings.",
+    "longDescription": "Bookora is a full-stack movie ticket booking platform inspired by BookMyShow, built with a Django REST Framework backend and a React frontend. The homepage features a visually striking fan-carousel where users can gently move their cursor to explore currently running films. Clicking a movie opens a rich detail page with ratings, runtime, genre, language and certification info, along with Book Now, Watch Trailer and Save to Watchlist actions. The booking flow takes users through showtime selection and an interactive seat map with real-time availability — colour-coded into Available, Selected and Booked states.",
+    "role": "Full Stack Developer",
+    "duration": "2 months",
+    "bullets": [
+      "🎬 Interactive fan-carousel homepage — hover to explore currently running films",
+      "⭐ Movie detail page with rating, runtime, genre, language, certification & release date",
+      "💺 Interactive seat map with row/column grid & colour-coded availability (Available / Selected / Booked)",
+      "🗓️ Show scheduling by date, time, cinema and screen",
+      "📍 Location-aware listings — city selector for personalised show results",
+      "🎟️ Book Now, Watch Trailer & Save to Watchlist actions on every movie",
+      "🔐 JWT authentication with Login / Signup flow",
+      "⚙️ Django-powered admin panel for managing movies, showtimes & theatre configurations"
+    ],
+    "tech": ["React", "Django", "Python", "Django REST Framework", "PostgreSQL", "JWT", "Tailwind CSS"],
+    "images": ["/bookora1.png", "/bookora2.png", "/bookora3.png"],
     "link": "#"
   }
 ]

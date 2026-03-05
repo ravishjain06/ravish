@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 import projectsData from "./project.json";
 
 const theme = {
@@ -397,6 +398,7 @@ const ProjectSection = ({ title, description, images, bullets, link, tech }) => 
 
 export default function Projects() {
   const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
   const projects = projectsData;
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
@@ -453,7 +455,7 @@ export default function Projects() {
         <div style={{ textAlign: "center", marginTop: "32px" }}>
           {!showAll && (
             <button
-              onClick={() => setShowAll(true)}
+              onClick={() => navigate("/projects")}
               style={{
                 padding: "12px 32px",
                 background: "linear-gradient(135deg, #2a2a2a, #1a1a1a)",
