@@ -89,7 +89,6 @@ const ProjectDetailPage = () => {
               { label: "Tech Used", value: project.tech.length + "+" },
               { label: "Features", value: project.bullets.length + "+" },
               { label: "Category", value: project.tag || "Project" },
-              { label: "Images", value: project.images?.length || 0 },
             ].map((stat, i) => (
               <div key={i} className="flex flex-col gap-0.5 px-5 first:pl-0">
                 <p className="text-zinc-600 text-[10px] tracking-widest uppercase">{stat.label}</p>
@@ -160,11 +159,12 @@ const ProjectDetailPage = () => {
             {allProjects
               .map((p, i) => ({ ...p, _idx: i }))
               .filter(p => p._idx !== parseInt(id, 10))
+              .sort(() => Math.random() - 0.5)
               .slice(0, 3)
               .map(p => (
                 <Link key={p._idx} to={`/projects/${p._idx}`} className="group block rounded-xl overflow-hidden border border-white/5 bg-[rgba(18,18,18,0.7)] backdrop-blur-md hover:border-white/15 hover:-translate-y-1 transition-all duration-300">
                   {p.images?.[0] && (
-                    <div className="w-full h-36 overflow-hidden">
+                    <div className="w-full h-52 overflow-hidden">
                       <img src={p.images[0]} alt={p.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
                     </div>
                   )}

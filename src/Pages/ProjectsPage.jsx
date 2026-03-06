@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import projectsData from "../Components/project.json";
@@ -43,9 +43,34 @@ const ProjectCard = ({ project, idx }) => (
 );
 
 const ProjectsPage = () => {
+  const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+    const timer = setTimeout(() => setLoading(false), 1000);
+    return () => clearTimeout(timer);
   }, []);
+
+  if (loading) {
+    return (
+      <div
+        className="min-h-screen flex items-center justify-center"
+        style={{ background: "linear-gradient(180deg,#000 0%,#0a0a0a 50%,#000 100%)" }}
+      >
+        <div
+          style={{
+            width: "44px",
+            height: "44px",
+            borderRadius: "50%",
+            border: "3px solid rgba(255,255,255,0.08)",
+            borderTop: "3px solid #ffffff",
+            animation: "spin 0.8s linear infinite",
+          }}
+        />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
 
   return (
   <div className="min-h-screen px-4 pt-24 pb-16" style={{ background: "linear-gradient(180deg,#000 0%,#0a0a0a 50%,#000 100%)" }}>

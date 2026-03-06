@@ -400,7 +400,7 @@ export default function Projects() {
   const [showAll, setShowAll] = useState(false);
   const navigate = useNavigate();
   const projects = projectsData;
-  const displayedProjects = showAll ? projects : projects.slice(0, 3);
+  const displayedProjects = showAll ? projects : projects.slice(0, 4);
 
   return (
     <section

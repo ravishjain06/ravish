@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const lineVariants = {
   hidden: {
@@ -71,6 +71,8 @@ const RLogo = ({ width = 40, height = 40, animated = true }) => (
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const location = useLocation()
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -79,6 +81,33 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // After navigating to home, scroll to the target section
+  useEffect(() => {
+    if (location.state?.scrollTo) {
+      const id = location.state.scrollTo
+      const tryScroll = (attempts = 0) => {
+        const el = document.getElementById(id)
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' })
+          navigate(location.pathname, { replace: true, state: {} })
+        } else if (attempts < 10) {
+          setTimeout(() => tryScroll(attempts + 1), 100)
+        }
+      }
+      tryScroll()
+    }
+  }, [location.state])
+
+  const handleSectionClick = (e, sectionId) => {
+    e.preventDefault()
+    setMenuOpen(false)
+    if (location.pathname === '/') {
+      document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+    } else {
+      navigate('/', { state: { scrollTo: sectionId } })
+    }
+  }
 
   return (
     <nav className="w-full fixed top-0 left-0 z-50 flex justify-center pointer-events-none">
@@ -124,10 +153,7 @@ const Navbar = () => {
             <a
               href="#skills"
               className="transition-colors duration-200 relative z-10"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={e => handleSectionClick(e, 'skills')}
             >Skills</a>
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
           </li>
@@ -135,10 +161,7 @@ const Navbar = () => {
             <a
               href="#contact"
               className="transition-colors duration-200 relative z-10"
-              onClick={e => {
-                e.preventDefault();
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={e => handleSectionClick(e, 'contact')}
             >Contact</a>
             <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
           </li>
@@ -164,11 +187,7 @@ const Navbar = () => {
               <a
                 href="#skills"
                 className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  document.getElementById('skills')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={e => handleSectionClick(e, 'skills')}
               >Skills</a>
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
             </li>
@@ -176,11 +195,7 @@ const Navbar = () => {
               <a
                 href="#contact"
                 className="hover:text-white transition-colors duration-200 block w-full text-center relative z-10"
-                onClick={e => {
-                  e.preventDefault();
-                  setMenuOpen(false);
-                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+                onClick={e => handleSectionClick(e, 'contact')}
               >Contact</a>
               <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-gradient-to-r from-white to-zinc-400 transition-all duration-300 group-hover:w-full"></span>
             </li>

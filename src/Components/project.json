@@ -18,7 +18,7 @@
     ],
     "tech": ["React", "Node.js", "MongoDB", "Express", "Stripe", "JWT", "Tailwind CSS"],
     "images": ["/WEAREX1.png", "/WEAREX2.png", "/WEAREX3.png"],
-    "link": "#"
+    "link": "https://wearex-frontend.onrender.com/"
   },
   {
     "title": "Vakta AI Voice Agent",
