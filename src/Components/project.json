@@ -81,7 +81,7 @@
     ],
     "tech": ["React", "Node.js", "MongoDB", "Express", "JWT", "Tailwind CSS"],
     "images": ["/Movya-Attendace1.png", "/Movya-Attendace2.png", "/Movya-Attendace5.png"],
-    "link": "#"
+    "link": "https://attendance.movya.com/"
   },
   {
     "title": "Movya AI Platform",
